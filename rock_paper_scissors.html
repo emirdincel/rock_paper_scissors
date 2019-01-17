@@ -1,0 +1,70 @@
+<script>
+     
+    function playRound(playerSelection, computerSelection) {
+
+        if (playerSelection == "rock") {
+            if (computerSelection == "rock") {
+                console.log("It's a draw!");
+            }
+            else if (computerSelection == "paper") {
+                console.log("You lose! Paper beats rock!");
+                computerWin++;
+            }
+            else if (computerSelection == "scissors") {
+                console.log("You win! Rock beats scissors!");
+                playerWin++;
+            }
+        }
+        else if (playerSelection == "paper") {
+            if (computerSelection == "rock") {
+                console.log("You win! Paper beats rock!");
+                playerWin++;
+            }
+            else if (computerSelection == "paper") {
+                console.log("It's a draw!");
+            }
+            else if (computerSelection == "scissors") {
+                console.log("You lose! Scissors beats paper!");
+                computerWin++;
+            }
+        }
+        else if (playerSelection == "scissors") {
+            if (computerSelection == "rock") {
+                console.log("You lose! Rock beats scissors!");
+                computerWin++;
+            }
+            else if (computerSelection == "paper") {
+                console.log("You win! Scissors beats paper!");
+                playerWin++;
+            }
+            else if (computerSelection == "scissors") {
+                console.log("It's a draw!");
+            }
+        }
+    }
+    let roundCounter = 0;
+    let playerWin = 0;
+    let computerWin = 0;
+
+    let computerOptions = ["rock", "paper", "scissors"];
+    function computerPlay(){
+        return computerOptions[Math.floor(Math.random()*computerOptions.length)];
+    }
+
+    function game() {
+        for (roundCounter = 0; roundCounter < 5; roundCounter++) {
+            let playerSelection = window.prompt("Rock, paper or scissors?", " ");
+            playerSelection.toLowerCase();
+            let computerSelection = computerPlay()
+            playRound(playerSelection, computerSelection);
+        }
+    }
+    game();
+
+    if (playerWin > computerWin) {
+            console.log("You win! Your score: " + playerWin + ", Computer Score: " + computerWin + ".");
+        }
+    else {
+            console.log("You lose! Your score: " + playerWin + ", Computer Score: " + computerWin + ".");
+        }
+</script>
